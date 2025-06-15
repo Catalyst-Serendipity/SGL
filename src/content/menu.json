@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Soto Ayam Kampung",
+    "price": 20000,
+    "description": "Soto ayam kampung khas Banyumas dengan koya gurih.",
+    "picture": "https://food-cms.grab.com/compressed_webp/items/IDITE20220621084322038783/detail/menueditor_item_491a17efae194b198b52cb89a2e3afcc_1655895699477378322.webp"
+  },
+  {
+    "name": "Soto Babat Asli",
+    "price": 23000,
+    "description": "Soto babat gurih, disajikan dengan sambal kacang nikmat.",
+    "picture": "https://food-cms.grab.com/compressed_webp/items/IDITE2024080706042152289/detail/menueditor_item_3a1623ae354148f49af2f967ec08687c_1724654762139193472.webp"
+  },
+  {
+    "name": "Soto Daging Sapi Asli",
+    "price": 25000,
+    "description": "Kuah kental dari kaldu sapi asli, disajikan dengan sambal dan koya.",
+    "picture": "https://food-cms.grab.com/compressed_webp/items/IDITE2024051405031419397/detail/menueditor_item_8b1a4f5f3e16413ab7894b8d135b5775_1715662891559841377.webp"
+  }
+]

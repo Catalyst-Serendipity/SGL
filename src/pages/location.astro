@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const title = "Lokasi - Soto Gareng Lama";
+---
+
+<BaseLayout {title}>
+  <slot name="header">
+    <Header />
+  </slot>
+
+  <main class="max-w-4xl mx-auto px-4 py-8 min-h-[calc(100vh-200px)]">
+    <h1 class="text-3xl font-bold text-[#432818] mb-8 text-center">Lokasi Kami</h1>
+    
+    <div class="bg-white p-8 rounded-lg shadow-md">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-xl font-semibold text-[#432818] mb-4">Alamat</h2>
+          <div class="space-y-4">
+            <p class="flex items-start">
+              <span class="mr-2">📍</span>
+              <span>Jl. Kulon, Sudagaran, Banyumas, Jawa Tengah</span>
+            </p>
+            
+            <p class="flex items-start">
+              <span class="mr-2">⏰</span>
+              <span>
+                <strong>Jam Operasional:</strong><br>
+                Setiap Hari: 09.00 - 16.00 WIB
+              </span>
+            </p>
+            
+            <p class="flex items-start">
+              <span class="mr-2">📞</span>
+              <span>
+                <strong>Kontak:</strong><br>
+                -
+              </span>
+            </p>
+          </div>
+        </div>
+        
+        <div class="h-full">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.1405392151385!2d109.29235471477629!3d-7.512335775424558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655b087036fb27%3A0x6145404b57aa2ad5!2sSoto%20Gareng%20Lama!5e0!3m2!1sid!2sid!4v1718466660000" 
+            width="100%" 
+            height="100%" 
+            class="rounded-lg min-h-[300px]"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

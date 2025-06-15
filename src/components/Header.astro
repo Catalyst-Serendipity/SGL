@@ -1,0 +1,152 @@
+<nav class="bg-[#bb9457] text-white shadow-2xl rounded-b-2xl sticky top-0 z-50 backdrop-blur-sm bg-opacity-95 transition-opacity duration-300 opacity-0 animate-fadeIn">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+    <!-- Logo Section -->
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="relative h-10 w-10 sm:h-12 sm:w-12">
+        <img 
+          src="/src/assets/images/logo.png" 
+          alt="Logo Soto Gareng Lama" 
+          class="h-full w-full rounded-full shadow-lg ring-2 ring-white ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6"
+          style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3))"
+          loading="eager"
+        />
+        <div class="absolute inset-0 rounded-full border-2 border-amber-200 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+      <span class="text-xl sm:text-2xl font-extrabold tracking-wide font-serif bg-gradient-to-r from-amber-100 to-white bg-clip-text text-transparent drop-shadow-lg transition-all duration-300 group-hover:tracking-wider">
+        Soto Gareng Lama
+      </span>
+    </a>
+
+    <!-- Desktop Menu - All Items Uniform -->
+    <ul class="hidden md:flex gap-6 lg:gap-8 text-sm font-medium items-center">
+      <!-- Beranda -->
+      <li>
+        <a href="/" class="relative py-2 px-1 hover:text-amber-100 transition-colors duration-300 group">
+          Beranda
+          <span class="absolute left-1/2 -bottom-1 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+      
+      <!-- Menu -->
+      <li>
+        <a href="/menu" class="relative py-2 px-1 hover:text-amber-100 transition-colors duration-300 group">
+          Menu
+          <span class="absolute left-1/2 -bottom-1 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+      
+      <!-- Tentang Kami -->
+      <li>
+        <a href="/about" class="relative py-2 px-1 hover:text-amber-100 transition-colors duration-300 group">
+          Tentang Kami
+          <span class="absolute left-1/2 -bottom-1 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+      
+      <!-- Lokasi -->
+      <li>
+        <a href="/location" class="relative py-2 px-1 hover:text-amber-100 transition-colors duration-300 group">
+          Lokasi
+          <span class="absolute left-1/2 -bottom-1 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+      
+      <!-- Ulasan -->
+      <li>
+        <a href="/review" class="relative py-2 px-1 hover:text-amber-100 transition-colors duration-300 group">
+          Ulasan
+          <span class="absolute left-1/2 -bottom-1 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile Hamburger Button -->
+    <button id="mobile-menu-button" class="md:hidden focus:outline-none p-2" aria-label="Toggle menu">
+      <div class="w-6 flex flex-col gap-1.5 transition-all duration-300">
+        <span class="h-0.5 w-full bg-white rounded-full transition-all duration-300 transform" id="bar1"></span>
+        <span class="h-0.5 w-full bg-white rounded-full transition-all duration-300" id="bar2"></span>
+        <span class="h-0.5 w-full bg-white rounded-full transition-all duration-300 transform" id="bar3"></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Mobile Menu (Uniform Items) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#bb9457] bg-opacity-95 backdrop-blur-sm px-4 pb-4 pt-2 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]">
+    <ul class="flex flex-col gap-4 text-sm font-medium">
+      <li>
+        <a href="/" class="block py-2 px-3 hover:text-amber-100 transition-colors duration-300 relative overflow-hidden group">
+          Beranda
+          <span class="absolute left-1/2 bottom-0 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+      <li>
+        <a href="/menu" class="block py-2 px-3 hover:text-amber-100 transition-colors duration-300 relative overflow-hidden group">
+          Menu
+          <span class="absolute left-1/2 bottom-0 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+      <li>
+        <a href="/about" class="block py-2 px-3 hover:text-amber-100 transition-colors duration-300 relative overflow-hidden group">
+          Tentang Kami
+          <span class="absolute left-1/2 bottom-0 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+      <li>
+        <a href="/location" class="block py-2 px-3 hover:text-amber-100 transition-colors duration-300 relative overflow-hidden group">
+          Lokasi
+          <span class="absolute left-1/2 bottom-0 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+      <li>
+        <a href="/review" class="block py-2 px-3 hover:text-amber-100 transition-colors duration-300 relative overflow-hidden group">
+          Ulasan
+          <span class="absolute left-1/2 bottom-0 w-0 h-0.5 bg-amber-200 transition-all duration-500 group-hover:w-full group-hover:left-0 transform -translate-x-1/2 group-hover:translate-x-0"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const bars = ['bar1', 'bar2', 'bar3'].map(id => document.getElementById(id));
+
+    menuButton.addEventListener('click', function() {
+      const isHidden = menu.classList.toggle('hidden');
+
+      // Animate hamburger to X
+      bars[0].style.transform = isHidden ? 'rotate(0) translateY(0)' : 'rotate(45deg) translateY(6px)';
+      bars[1].style.opacity = isHidden ? '1' : '0';
+      bars[2].style.transform = isHidden ? 'rotate(0) translateY(0)' : 'rotate(-45deg) translateY(-6px)';
+
+      // Smooth menu transition
+      if (isHidden) {
+        menu.style.maxHeight = '0';
+        menu.style.opacity = '0';
+      } else {
+        menu.style.maxHeight = '500px';
+        menu.style.opacity = '1';
+      }
+    });
+  });
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.5s;
+  }
+  
+  /* Uniform transition timing */
+  * {
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>

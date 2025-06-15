@@ -1,0 +1,91 @@
+---
+import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Soto Gareng Lama - Soto Legendaris Banyumas";
+---
+
+<BaseLayout {title}>
+  <slot name="header">
+    <Header />
+  </slot>
+
+  <section class="text-center py-10 px-4">
+    <h1 class="text-4xl md:text-5xl font-serif font-extrabold text-[#432818] mb-4 animate-fadeIn delay-200">
+      Rasa Tradisi, Cita Rasa Keluarga
+    </h1>
+    <p class="text-lg text-gray-700 max-w-2xl mx-auto animate-fadeIn delay-200">
+      Menyajikan Soto Ayam Kampung, Soto Babat Asli, dan Soto Sapi Asli khas Banyumas dengan resep turun-temurun sejak zaman dahulu.
+    </p>
+    <div class="mt-6 animate-fadeIn delay-200">
+      <a href="/menu" class="inline-block bg-[#432818] hover:bg-[#5f2f1c] text-white px-6 py-3 rounded-full font-semibold transition transform hover:scale-105 shadow-md hover:shadow-lg">
+        Lihat Menu
+      </a>
+    </div>
+  </section>
+
+  <!-- Animated Grid Section -->
+  <section class="grid md:grid-cols-3 gap-8 mt-16 px-4 animate-fadeIn delay-200">
+    <!-- Card 1 -->
+    <div class="bg-white shadow-lg rounded-xl p-6 border-t-4 border-[#bb9457] hover:border-amber-600 transition-all duration-300 transform hover:-translate-y-2 group overflow-hidden relative">
+      <div class="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <h2 class="text-xl font-semibold mb-2 text-[#432818] font-serif relative z-10">Bahan Pilihan</h2>
+      <p class="text-gray-700 text-sm leading-relaxed relative z-10">
+        Kami hanya menggunakan bahan segar dan berkualitas tinggi, memastikan setiap mangkuk soto memiliki rasa terbaik.
+      </p>
+      <div class="absolute bottom-0 left-1/2 w-0 h-1 bg-amber-200 transform -translate-x-1/2 group-hover:w-full transition-all duration-500 delay-200"></div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white shadow-lg rounded-xl p-6 border-t-4 border-[#bb9457] hover:border-amber-600 transition-all duration-300 transform hover:-translate-y-2 group overflow-hidden relative">
+      <div class="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200"></div>
+      <h2 class="text-xl font-semibold mb-2 text-[#432818] font-serif relative z-10">Resep Keluarga</h2>
+      <p class="text-gray-700 text-sm leading-relaxed relative z-10">
+        Resep rahasia dari generasi ke generasi, menciptakan rasa yang tak tergantikan di setiap sendoknya.
+      </p>
+      <div class="absolute bottom-0 left-1/2 w-0 h-1 bg-amber-200 transform -translate-x-1/2 group-hover:w-full transition-all duration-500 delay-200"></div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-white shadow-lg rounded-xl p-6 border-t-4 border-[#bb9457] hover:border-amber-600 transition-all duration-300 transform hover:-translate-y-2 group overflow-hidden relative">
+      <div class="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200"></div>
+      <h2 class="text-xl font-semibold mb-2 text-[#432818] font-serif relative z-10">Suasana Hangat</h2>
+      <p class="text-gray-700 text-sm leading-relaxed relative z-10">
+        Nikmati suasana tradisional dan pelayanan ramah yang membuat Anda merasa seperti di rumah sendiri.
+      </p>
+      <div class="absolute bottom-0 left-1/2 w-0 h-1 bg-amber-200 transform -translate-x-1/2 group-hover:w-full transition-all duration-500 delay-200"></div>
+    </div>
+  </section>
+
+  <!-- Logo Section -->
+  <section class="mt-20 text-center px-4 animate-fadeIn delay-200">
+    <div class="inline-block p-4 rounded-full bg-amber-50/50 hover:bg-amber-100/30 transition-all duration-500">
+      <img 
+        src="/src/assets/images/logo.png" 
+        alt="Logo Soto Gareng Lama" 
+        class="w-24 h-24 md:w-32 md:h-32 mx-auto transition-all duration-500 hover:rotate-6 hover:scale-105"
+        style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1))"
+      />
+    </div>
+    <p class="text-gray-600 italic text-sm mt-4">
+      “Soto bukan hanya makanan, tapi warisan budaya.”
+    </p>
+  </section>
+
+  <!-- Animation Styles -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    .delay-200 { animation-delay: 0.2s; }
+    
+    /* Custom hover effects */
+    [style*="clip-path"] {
+      transition: clip-path 0.6s ease-out;
+    }
+  </style>
+</BaseLayout>

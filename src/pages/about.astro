@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const title = "Tentang Kami - Soto Gareng Lama";
+---
+
+<BaseLayout {title}>
+  <slot name="header">
+    <Header />
+  </slot>
+
+  <main class="max-w-4xl mx-auto px-4 py-8 min-h-[calc(100vh-200px)]">
+    <h1 class="text-3xl font-bold text-[#432818] mb-8 text-center">Sejarah & Filosofi</h1>
+    
+    <div class="bg-white p-8 rounded-lg shadow-md">
+      <div class="prose max-w-none text-gray-700">
+        <p class="mb-4">
+          Soto Gareng Lama adalah warisan kuliner yang mengusung cita rasa soto otentik khas Jawa Tengah.
+          Kami telah menjadi bagian dari sejarah kuliner Banyumas.
+        </p>
+        
+        <h2 class="text-xl font-semibold text-[#432818] mt-6 mb-3">Visi Kami</h2>
+        <p class="mb-4">
+          Menjaga keaslian resep turun-temurun sambil terus berinovasi dalam pelayanan.
+        </p>
+        
+        <h2 class="text-xl font-semibold text-[#432818] mt-6 mb-3">Bahan Pilihan</h2>
+        <p>
+          Kami hanya menggunakan bahan-bahan terbaik:
+        </p>
+        <ul class="list-disc pl-5 mt-2">
+          <li>Daging ayam kampung asli</li>
+          <li>Bumbu racikan khusus</li>
+          <li>Sambal kacang gurih</li>
+          <li>Sayuran segar setiap hari</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
