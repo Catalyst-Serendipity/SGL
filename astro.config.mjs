@@ -9,5 +9,7 @@ export default defineConfig({
         '@styles': '/src/styles'
       }
     }
-  }
+  },
+  site: "https://Catalyst-Serendipity.github.io/SGL",
+  base: "/SGL/",
 });

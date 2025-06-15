@@ -1,0 +1,23 @@
+{
+  "name": "Soto Gareng Lama",
+  "short_name": "SGL",
+  "icons": [
+    {
+      "src": "/SGL/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/SGL/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/SGL/",
+  "scope": "/SGL/",
+  "display": "standalone",
+  "theme_color": "#bb9457",
+  "background_color": "#fdf7f0",
+  "orientation": "portrait",
+  "id": "/SGL/?homescreen=1"
+}
