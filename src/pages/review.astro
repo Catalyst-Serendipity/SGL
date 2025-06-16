@@ -46,7 +46,7 @@ const sortedReviews = [...reviewData].sort((a, b) =>
               </div>
               <p class="text-gray-700 mb-4">"{review.comment}"</p>
               <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500" title={new Date(review.date).toLocaleString()}>
+                <span class="text-sm text-gray-500" title={new Date(review.date).toLocaleString('id-ID')}>
                   {timeAgoText}
                 </span>
                 <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">

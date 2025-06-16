@@ -146,7 +146,7 @@ const sortedReviews = [...reviewData].sort((a, b) =>
               {review.comment && (
                 <p class="text-gray-700 text-sm mb-2 animate-fadeIn">"{review.comment}"</p>
               )}
-              <span class="text-xs text-gray-500 animate-fadeIn" title={review.date}>
+              <span class="text-xs text-gray-500 animate-fadeIn" title={new Date(review.date).toLocaleString('id-ID')}>
                 {timeAgoText}
               </span>
               <div class="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg"></div>
