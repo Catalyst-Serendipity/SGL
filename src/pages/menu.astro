@@ -10,6 +10,9 @@ const grabFoodUrl = "https://food.grab.com/id/id/restaurant/soto-gareng-lama-sud
 const googleReviewUrl = "https://g.co/kgs/XDApvoR";
 const whatsAppUrl = "https://wa.me/6282138163056";
 const phoneUrl = "tel:+6282138163056";
+const sortedReviews = [...reviewData].sort((a, b) => 
+  new Date(b.date) - new Date(a.date)
+).reverse();
 ---
 
 <BaseLayout {title}>
@@ -113,93 +116,109 @@ const phoneUrl = "tel:+6282138163056";
     </div>
 
     <!-- Google Review Section -->
-    <div class="bg-white p-6 rounded-xl shadow-md mb-12">
+    <div class="bg-white p-6 rounded-xl shadow-md mb-12 animate-fadeIn delay-300">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-2xl font-bold text-[#432818]">Testimoni Pelanggan</h2>
-        <a href={googleReviewUrl} target="_blank" class="text-sm text-blue-600 hover:underline flex items-center">
+        <a href={googleReviewUrl} target="_blank" class="text-sm text-blue-600 hover:underline flex items-center group">
           Lihat semua di Google
-          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
           </svg>
         </a>
       </div>
       
       <div class="grid md:grid-cols-2 gap-6">
-        {reviewData.map((review) => {
+        {sortedReviews.slice(0, 4).map((review, index) => {
           const timeAgoText = timeAgo(review.date);
+          const animationDelay = 100 + (index * 100);
           
           return (
-            <div class="border border-gray-200 p-4 rounded-lg">
+            <div 
+              class="border border-gray-200 p-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1"
+              style={`animation-delay: ${animationDelay}ms`}
+            >
               <div class="flex items-center mb-3">
                 <div class="text-amber-400 text-xl mr-2">
                   {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
                 </div>
-                <span class="font-semibold">{review.name}</span>
+                <span class="font-semibold text-[#432818]">{review.name}</span>
               </div>
               {review.comment && (
-                <p class="text-gray-700 text-sm mb-2">"{review.comment}"</p>
+                <p class="text-gray-700 text-sm mb-2 animate-fadeIn">"{review.comment}"</p>
               )}
-              <span class="text-xs text-gray-500" title={review.date}>
+              <span class="text-xs text-gray-500 animate-fadeIn" title={review.date}>
                 {timeAgoText}
               </span>
+              <div class="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg"></div>
             </div>
           )
         })}
+      </div>
+
+      <!-- Dual CTA Section with Animations -->
+      <div class="grid md:grid-cols-2 gap-6 mt-8 animate-fadeIn delay-500">
+        <!-- Pesan Langsung -->
+        <div class="bg-[#432818] rounded-xl p-8 text-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <h2 class="text-2xl font-bold mb-4">Pesan Langsung</h2>
+          <p class="mb-6">Dapatkan harga asli warung tanpa biaya tambahan</p>
+          <div class="space-y-3">
+            <a 
+              href={`${whatsAppUrl}?text=Halo%20Soto%20Gareng%20Lama,%20saya%20ingin%20pesan%20soto.`}
+              class="block bg-white hover:bg-gray-300 text-[#432818] px-6 py-3 rounded-full font-semibold transition-all duration-300 text-center"
+            >
+              <span class="flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.52 3.48A11.89 11.89 0 0012.02 0a12 12 0 00-9.43 19.17L0 24l4.92-2.58A11.9 11.9 0 0012 24a12 12 0 008.49-20.52zm-8.5 18.1a9.49 9.49 0 01-4.82-1.3l-.35-.2-2.85 1.49.76-3.08-.2-.32a9.5 9.5 0 0115.08-11.21 9.48 9.48 0 01-7.62 15.62zm5.33-7.16c-.29-.15-1.7-.84-1.96-.94s-.46-.14-.65.14-.75.94-.92 1.13-.34.21-.63.07a7.67 7.67 0 01-2.27-1.4 8.59 8.59 0 01-1.59-2.06c-.17-.29 0-.45.13-.6s.29-.34.43-.51a2.03 2.03 0 00.29-.49.56.56 0 00-.03-.54c-.07-.15-.65-1.56-.89-2.14s-.47-.47-.64-.48h-.55a1.06 1.06 0 00-.76.35A3.2 3.2 0 005.4 8.1c0 1.91 1.39 3.76 1.58 4s2.73 4.14 6.63 5.63a9 9 0 003.36.64c1.28 0 2.45-.44 3.37-1.24s1.29-1.79 1.43-2.05a1.3 1.3 0 00-.63-1.21z"/>
+                </svg>
+                Pesan via WhatsApp
+              </span>
+            </a>
+            <a 
+              href={phoneUrl}
+              class="block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 text-center"
+            >
+              <span class="flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.5 2.52.78 3.88.78a1 1 0 011 1v3.25a1 1 0 01-1 1A16 16 0 013 5a1 1 0 011-1h3.25a1 1 0 011 1c0 1.36.27 2.68.78 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
+                </svg>
+                Telepon Sekarang
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pesan Online -->
+        <div class="bg-[#00B14F] rounded-xl p-8 text-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <h2 class="text-2xl font-bold mb-4">Pesan Online</h2>
+          <p class="mb-6">Untuk kenyamanan delivery tanpa keluar rumah</p>
+          <div class="space-y-3">
+            <a 
+              href={grabFoodUrl}
+              target="_blank"
+              class="block bg-white hover:bg-gray-200 text-[#00B14F] px-6 py-3 rounded-full font-semibold transition-all duration-300 text-center"
+            >
+              <span class="flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/>
+                </svg>
+                GrabFood
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Dual CTA Section -->
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- Pesan Langsung -->
-      <div class="bg-[#432818] rounded-xl p-8 text-white">
-        <h2 class="text-2xl font-bold mb-4">Pesan Langsung</h2>
-        <p class="mb-6">Dapatkan harga asli warung tanpa biaya tambahan</p>
-        <div class="space-y-3">
-          <a 
-            href={`${whatsAppUrl}?text=Halo%20Soto%20Gareng%20Lama,%20saya%20ingin%20pesan%20soto.`}
-            class="block bg-white hover:bg-gray-400 text-[#432818] px-6 py-3 rounded-full font-semibold transition text-center"
-          >
-            <span class="flex items-center justify-center gap-2">
-              <!-- WhatsApp Icon -->
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.52 3.48A11.89 11.89 0 0012.02 0a12 12 0 00-9.43 19.17L0 24l4.92-2.58A11.9 11.9 0 0012 24a12 12 0 008.49-20.52zm-8.5 18.1a9.49 9.49 0 01-4.82-1.3l-.35-.2-2.85 1.49.76-3.08-.2-.32a9.5 9.5 0 0115.08-11.21 9.48 9.48 0 01-7.62 15.62zm5.33-7.16c-.29-.15-1.7-.84-1.96-.94s-.46-.14-.65.14-.75.94-.92 1.13-.34.21-.63.07a7.67 7.67 0 01-2.27-1.4 8.59 8.59 0 01-1.59-2.06c-.17-.29 0-.45.13-.6s.29-.34.43-.51a2.03 2.03 0 00.29-.49.56.56 0 00-.03-.54c-.07-.15-.65-1.56-.89-2.14s-.47-.47-.64-.48h-.55a1.06 1.06 0 00-.76.35A3.2 3.2 0 005.4 8.1c0 1.91 1.39 3.76 1.58 4s2.73 4.14 6.63 5.63a9 9 0 003.36.64c1.28 0 2.45-.44 3.37-1.24s1.29-1.79 1.43-2.05a1.3 1.3 0 00-.63-1.21z"/>
-              </svg>
-              Pesan via WhatsApp
-            </span>
-          </a>
-          <a 
-            href={phoneUrl}
-            class="block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-semibold transition text-center"
-          >
-            <span class="flex items-center justify-center gap-2">
-              <!-- Phone Icon -->
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.5 2.52.78 3.88.78a1 1 0 011 1v3.25a1 1 0 01-1 1A16 16 0 013 5a1 1 0 011-1h3.25a1 1 0 011 1c0 1.36.27 2.68.78 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
-              </svg>
-              Telepon Sekarang
-            </span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Pesan Online -->
-      <div class="bg-[#00B14F] rounded-xl p-8 text-white">
-        <h2 class="text-2xl font-bold mb-4">Pesan Online</h2>
-        <p class="mb-6">Untuk kenyamanan delivery tanpa keluar rumah</p>
-        <div class="space-y-3">
-          <a 
-            href={grabFoodUrl}
-            target="_blank"
-            class="block bg-white hover:bg-gray-200 text-[#00B14F] px-6 py-3 rounded-full font-semibold transition text-center"
-          >
-            <span class="flex items-center justify-center gap-2">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/>
-              </svg>
-              GrabFood
-            </span>
-          </a>
-        </div>
-      </div>
+    <style is:global>
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.5s ease-out forwards;
+        opacity: 0;
+      }
+    </style>
   </main>
 </BaseLayout>
 
