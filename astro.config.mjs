@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   integrations: [tailwind()],
@@ -12,4 +13,5 @@ export default defineConfig({
   },
   site: "https://sotogarenglama.biz.id",
   base: "/",
+  integrations: [sitemap()],
 });
