@@ -3,7 +3,10 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [tailwind()],
+  integrations: [
+    tailwind(),
+    sitemap(),
+  ],
   vite: {
     resolve: {
       alias: {
@@ -13,5 +16,4 @@ export default defineConfig({
   },
   site: "https://sotogarenglama.biz.id",
   base: "/",
-  integrations: [sitemap()],
 });
