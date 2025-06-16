@@ -8,8 +8,8 @@ import { timeAgo } from '../utils/dateUtils';
 const title = "Menu Soto Gareng Lama";
 const grabFoodUrl = "https://food.grab.com/id/id/restaurant/soto-gareng-lama-sudagaran-delivery/6-C3L1ENU3APTTNX";
 const googleReviewUrl = "https://g.co/kgs/XDApvoR";
-const whatsAppUrl = "";
-const phoneUrl = "";
+const whatsAppUrl = "https://wa.me/6282138163056";
+const phoneUrl = "tel:+6282138163056";
 ---
 
 <BaseLayout {title}>
@@ -155,8 +155,8 @@ const phoneUrl = "";
         <p class="mb-6">Dapatkan harga asli warung tanpa biaya tambahan</p>
         <div class="space-y-3">
           <a 
-            href={whatsAppUrl} 
-            class="block bg-white hover:bg-gray-100 text-[#432818] px-6 py-3 rounded-full font-semibold transition text-center"
+            href={`${whatsAppUrl}?text=Halo%20Soto%20Gareng%20Lama,%20saya%20ingin%20pesan%20soto.`}
+            class="block bg-white hover:bg-gray-400 text-[#432818] px-6 py-3 rounded-full font-semibold transition text-center"
           >
             <span class="flex items-center justify-center gap-2">
               <!-- WhatsApp Icon -->
@@ -189,7 +189,7 @@ const phoneUrl = "";
           <a 
             href={grabFoodUrl}
             target="_blank"
-            class="block bg-white hover:bg-gray-100 text-[#00B14F] px-6 py-3 rounded-full font-semibold transition text-center"
+            class="block bg-white hover:bg-gray-200 text-[#00B14F] px-6 py-3 rounded-full font-semibold transition text-center"
           >
             <span class="flex items-center justify-center gap-2">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
