@@ -13,5 +13,5 @@ export default defineConfig({
   },
   site: "https://sotogarenglama.biz.id",
   base: "/",
-  //integrations: [sitemap()],
+  integrations: [sitemap()],
 });

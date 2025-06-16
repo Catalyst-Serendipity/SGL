@@ -10,7 +10,7 @@ import Footer from '../components/Footer.astro';
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="soto, sotogareng, sotogarenglama, soto sapi, soto babat, makanan ter enak, soto ter enak, soto ayam asli, soto ayam kampung asli, soto sapi asli, soto babat asli, restoran, restaurants, soto banyumas, makanan, grab makanan, grabfood soto, grabfood soto gareng, soto gareng, banyumas kota lama, soto enak, soto kota lama, kota lama, kuliner banyumas, soto kampung, soto gareng lama, soto ayam, soto ayam kampung" />
+    <meta name="keywords" content="soto, soto gareng, soto gareng lama, soto sapi, soto babat, makanan terenak, soto terenak, soto ayam asli, soto ayam kampung asli, soto sapi asli, soto babat asli, restoran, restaurants, soto banyumas, makanan, grab makanan, grabfood soto, grabfood soto gareng, banyumas kota lama, soto enak, soto kota lama, kota lama, kuliner banyumas, soto kampung, soto ayam, soto ayam kampung" />
     <meta name="author" content="Soto Gareng Lama" />
 
     <!-- SEO & OG -->
@@ -37,6 +37,33 @@ import Footer from '../components/Footer.astro';
     <!-- Robots -->
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://sotogarenglama.biz.id" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script is:inline type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Soto Gareng Lama",
+      "image": "https://sotogarenglama.biz.id/logo.png",
+      "telephone": "+6282138163056",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Kulon, Mruyung, Sudagaran",
+        "addressLocality": "Banyumas",
+        "addressRegion": "Jawa Tengah",
+        "postalCode": "53192",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.51233,
+        "longitude": 109.29235
+      },
+      "url": "https://sotogarenglama.biz.id",
+      "servesCuisine": "Soto, Makanan Tradisional, Soto Ayam Kampung, Soto Babat Asli, Soto Sapi Asli",
+      "priceRange": "IDR20000-IDR30000"
+    }
+    </script>
   </head>
 
   <body class="bg-[#fdf7f0] text-gray-900 font-serif">

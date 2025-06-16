@@ -1,47 +1,25 @@
-export function parseCustomDate(dateStr) {
-  const months = {
-    'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'Mei': 4, 'Jun': 5,
-    'Jul': 6, 'Agu': 7, 'Sep': 8, 'Okt': 9, 'Nov': 10, 'Des': 11
-  };
-  
-  const parts = dateStr.split(/[\s,.:]+/);
-  const day = parseInt(parts[0]);
-  const month = months[parts[1]];
-  const year = parseInt(parts[2]);
-  const hour = parseInt(parts[3] || 0);
-  const minute = parseInt(parts[4] || 0);
-  
-  return new Date(year, month, day, hour, minute);
-}
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/id';
 
-export function timeAgo(dateInput) {
-  let date;
-  
-  if (typeof dateInput === 'string') {
-    date = isNaN(new Date(dateInput).getTime()) 
-      ? parseCustomDate(dateInput) 
-      : new Date(dateInput);
-  } else {
-    date = dateInput;
-  }
-  
-  const now = new Date();
-  const seconds = Math.floor((now - date) / 1000);
-  
-  const intervals = {
-    tahun: 31536000,
-    bulan: 2592000,
-    hari: 86400,
-    jam: 3600,
-    menit: 60
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(relativeTime);
+dayjs.locale('id');
+
+export function timeAgo(str) {
+  const parts = str.split(/[\s,.:]+/);
+  const day = parts[0], month = parts[1], year = parts[2], hour = parts[3] || '00', minute = parts[4] || '00';
+
+  const months = {
+    Jan: '01', Feb: '02', Mar: '03', Apr: '04', Mei: '05', Jun: '06',
+    Jul: '07', Agu: '08', Sep: '09', Okt: '10', Nov: '11', Des: '12'
   };
-  
-  for (const [unit, secondsInUnit] of Object.entries(intervals)) {
-    const interval = Math.floor(seconds / secondsInUnit);
-    if (interval >= 1) {
-      return `${interval} ${unit} lalu`;
-    }
-  }
-  
-  return 'beberapa detik lalu';
+
+  const formatted = `${year}-${months[month]}-${day}T${hour}:${minute}`;
+  const parsed = dayjs.tz(formatted, 'Asia/Jakarta');
+
+  return parsed.fromNow();
 }
