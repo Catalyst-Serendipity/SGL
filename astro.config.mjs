@@ -10,6 +10,6 @@ export default defineConfig({
       }
     }
   },
-  site: "https://Catalyst-Serendipity.github.io/SGL",
-  base: "/SGL/",
+  site: "https://sotogarenglama.biz.id",
+  base: "/",
 });
