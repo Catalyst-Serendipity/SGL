@@ -9,7 +9,8 @@ dayjs.extend(timezone);
 dayjs.extend(relativeTime);
 dayjs.locale('id');
 
-export function timeAgo(str) {
+document.querySelectorAll('.time-ago[data-date]').forEach(el => {
+  const str = el.getAttribute('data-date');
   const parts = str.split(/[\s,.:]+/);
   const day = parts[0], month = parts[1], year = parts[2], hour = parts[3] || '00', minute = parts[4] || '00';
 
@@ -20,6 +21,5 @@ export function timeAgo(str) {
 
   const formatted = `${year}-${months[month]}-${day}T${hour}:${minute}`;
   const parsed = dayjs.tz(formatted, 'Asia/Jakarta');
-
-  return parsed.fromNow();
-}
+  el.textContent = parsed.fromNow();
+});

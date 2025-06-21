@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import menuData from '../content/menu.json';
 import reviewData from '../content/review.json';
-import { timeAgo } from '../utils/dateUtils';
 
 const title = "Menu Soto Gareng Lama";
 const grabFoodUrl = "https://food.grab.com/id/id/restaurant/soto-gareng-lama-sudagaran-delivery/6-C3L1ENU3APTTNX";
@@ -129,7 +128,6 @@ const sortedReviews = [...reviewData].sort((a, b) =>
       
       <div class="grid md:grid-cols-2 gap-6">
         {sortedReviews.slice(0, 4).map((review, index) => {
-          const timeAgoText = timeAgo(review.date);
           const animationDelay = 100 + (index * 100);
           
           return (
@@ -146,8 +144,12 @@ const sortedReviews = [...reviewData].sort((a, b) =>
               {review.comment && (
                 <p class="text-gray-700 text-sm mb-2 animate-fadeIn">"{review.comment}"</p>
               )}
-              <span class="text-xs text-gray-500 animate-fadeIn" title={new Date(review.date).toLocaleString('id-ID')}>
-                {timeAgoText}
+              <span 
+                class="text-sm text-gray-500 time-ago"
+                data-date={review.date}
+                title={new Date(review.date).toLocaleString('id-ID')}
+              >
+                {review.date}
               </span>
               <div class="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg"></div>
             </div>
@@ -208,6 +210,8 @@ const sortedReviews = [...reviewData].sort((a, b) =>
         </div>
       </div>
     </div>
+
+    <script is:inline type="module" src="/src/scripts/timeAgo"></script>
 
     <style is:global>
       @keyframes fadeIn {
