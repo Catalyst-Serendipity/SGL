@@ -27,7 +27,8 @@ const description = "Soto Gareng Lama adalah warung soto terenak di Banyumas den
     <div class="absolute inset-0 bg-gradient-to-b from-[#120A05]/55 via-[#120A05]/30 to-[#120A05]/80"></div>
     <div class="absolute top-20 left-10 h-72 w-72 rounded-full bg-[#C9942A]/10 blur-3xl pointer-events-none"></div>
 
-    <div class="relative z-10 mx-auto max-w-5xl px-6 pt-16 text-center md:pt-24">
+    <!-- Container -->
+    <div class="relative z-10 mx-auto max-w-5xl px-6 pt-16 pb-24 text-center md:pt-24 md:pb-32">
 
       <div class="fade-up fade-up-delay-1 mb-6">
         <span class="mb-2 block text-sm font-medium uppercase tracking-[0.35em] text-[#E8B84B]/80" style="font-family:'Lora',serif;">
@@ -65,28 +66,34 @@ const description = "Soto Gareng Lama adalah warung soto terenak di Banyumas den
         </a>
       </div>
 
-      <div class="fade-up fade-up-delay-5 mt-10 flex flex-wrap justify-center gap-4 md:mt-12 md:gap-6">
-        <div class="rounded-2xl border border-white/10 bg-black/20 px-6 py-4 text-center shadow-[0_10px_35px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-black/25">
-          <div class="text-lg font-bold text-[#E8B84B] md:text-xl" style="font-family:'Playfair Display',serif;">⭐ 5.0</div>
-          <div class="mt-1 text-xs uppercase tracking-widest text-[#F6E7C8]/50">Rating Google</div>
+      <!-- Card Stats -->
+      <div class="fade-up fade-up-delay-5 mt-10 flex flex-wrap justify-center gap-3 md:mt-12 md:gap-6">
+        <div class="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-center shadow-[0_10px_35px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-black/25 md:px-6 md:py-4">
+          <div class="text-base font-bold text-[#E8B84B] md:text-xl" style="font-family:'Playfair Display',serif;">⭐ 5.0</div>
+          <div class="mt-0.5 text-[10px] uppercase tracking-widest text-[#F6E7C8]/50 md:mt-1 md:text-xs">Rating Google</div>
         </div>
-        <div class="rounded-2xl border border-white/10 bg-black/20 px-6 py-4 text-center shadow-[0_10px_35px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-black/25">
-          <div class="text-lg font-bold text-[#E8B84B] md:text-xl" style="font-family:'Playfair Display',serif;">Resep Warisan</div>
-          <div class="mt-1 text-xs uppercase tracking-widest text-[#F6E7C8]/50">Sejak Dahulu</div>
+        <div class="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-center shadow-[0_10px_35px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-black/25 md:px-6 md:py-4">
+          <div class="text-base font-bold text-[#E8B84B] md:text-xl" style="font-family:'Playfair Display',serif;">Resep Warisan</div>
+          <div class="mt-0.5 text-[10px] uppercase tracking-widest text-[#F6E7C8]/50 md:mt-1 md:text-xs">Sejak Dahulu</div>
         </div>
-        <div class="rounded-2xl border border-white/10 bg-black/20 px-6 py-4 text-center shadow-[0_10px_35px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-black/25">
-          <div class="text-lg font-bold text-[#E8B84B] md:text-xl" style="font-family:'Playfair Display',serif;">09–16 WIB</div>
-          <div class="mt-1 text-xs uppercase tracking-widest text-[#F6E7C8]/50">Setiap Hari Buka</div>
+        <div class="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-center shadow-[0_10px_35px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-black/25 md:px-6 md:py-4">
+          <div class="text-base font-bold text-[#E8B84B] md:text-xl" style="font-family:'Playfair Display',serif;">09–16 WIB</div>
+          <div class="mt-0.5 text-[10px] uppercase tracking-widest text-[#F6E7C8]/50 md:mt-1 md:text-xs">Setiap Hari Buka</div>
         </div>
       </div>
 
     </div>
 
-    <div class="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-[#FDF6EC] via-[#FDF6EC]/50 to-transparent"></div>
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-[#E8B84B]/50">
-      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
-      </svg>
+    <!-- Bottom Gradient Transition -->
+    <div class="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-[#F5E8D0] via-[#F5E8D0]/50 to-transparent"></div>
+    
+    <!-- Bouncing Arrows -->
+    <div class="absolute bottom-8 left-0 right-0 z-20 flex justify-center">
+      <div class="animate-bounce text-[#E8B84B]/50">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
     </div>
   </section>
 
