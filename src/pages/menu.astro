@@ -110,11 +110,11 @@ const whatsAppUrl = "https://wa.me/6282138163056";
         </p>
       </div>
 
-      <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div class="grid gap-8 px-1 py-3 md:grid-cols-2 xl:grid-cols-3">
         {menuData.map((item) => {
           const onlinePrice = Math.round((item.price + 1000) * 1.25);
           return (
-            <article class="group relative isolate overflow-hidden rounded-[36px] border border-[#EFE3D5] bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
+            <article class="group relative isolate overflow-hidden rounded-[36px] border border-[#EFE3D5] bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)] transition-transform duration-500 will-change-transform hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
 
               <div class="relative h-[260px] overflow-hidden rounded-t-[36px]">
                 <img
