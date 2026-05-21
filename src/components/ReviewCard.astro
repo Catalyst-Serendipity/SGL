@@ -1,0 +1,156 @@
+---
+interface Props {
+  review: {
+    name: string;
+    avatar?: string;
+    rating: number;
+    comment?: string;
+    date?: string;
+  };
+
+  variant?: 'light' | 'dark';
+}
+
+const {
+  review,
+  variant = 'light'
+} = Astro.props;
+
+const isDark = variant === 'dark';
+
+const cardClass = isDark
+  ? 'bg-[#3D2412] border-[#C9942A]/20 hover:border-[#C9942A]/50'
+  : 'bg-[#FDF6EC] border-[#C9942A]/10 hover:border-[#C9942A]/30';
+
+const nameClass = isDark
+  ? 'text-white'
+  : 'text-[#2C1A0E]';
+
+const commentClass = isDark
+  ? 'text-[#E8B84B]/60'
+  : 'text-[#5C3317]';
+
+const dateClass = isDark
+  ? 'text-[#C9942A]/40'
+  : 'text-[#8B5E3C]/50';
+
+const fallbackClass = isDark
+  ? 'bg-[#C9942A]/20 text-[#E8B84B]'
+  : 'bg-[#C9942A] text-white';
+
+const avatarId = `avatar-${review.name
+  .toLowerCase()
+  .replace(/\s+/g, '-')}`;
+
+const fallbackId = `fallback-${review.name
+  .toLowerCase()
+  .replace(/\s+/g, '-')}`;
+---
+
+<article
+  class:list={[
+    'rounded-[32px] border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl',
+    cardClass
+  ]}
+>
+
+  <!-- HEADER -->
+  <div class="flex items-center gap-4">
+
+    <div class="relative h-12 w-12 shrink-0">
+
+      {
+        review.avatar && (
+          <img
+            id={avatarId}
+            src={review.avatar}
+            alt={`Foto profil ${review.name}`}
+            class="h-12 w-12 rounded-full object-cover ring-2 ring-[#C9942A]/20"
+            loading="lazy"
+            decoding="async"
+            referrerpolicy="no-referrer"
+            onerror={`
+              this.style.display='none';
+              const fallback = document.getElementById('${fallbackId}');
+              if(fallback) fallback.style.display='flex';
+            `}
+          />
+        )
+      }
+
+      <div
+        id={fallbackId}
+        class:list={[
+          'flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold',
+          fallbackClass,
+          review.avatar ? 'hidden' : 'flex'
+        ]}
+        style="font-family:'Playfair Display',serif;"
+      >
+        {review.name.charAt(0).toUpperCase()}
+      </div>
+
+    </div>
+
+    <div class="min-w-0">
+
+      <p
+        class:list={[
+          'truncate text-sm font-semibold',
+          nameClass
+        ]}
+        style="font-family:'Lora',serif;"
+      >
+        {review.name}
+      </p>
+
+      <div class="text-xs text-[#C9942A]">
+        {'★'.repeat(review.rating)}
+        {'☆'.repeat(5 - review.rating)}
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- COMMENT -->
+  {
+    review.comment ? (
+      <p
+        class:list={[
+          'mt-5 text-sm italic leading-relaxed',
+          commentClass
+        ]}
+        style="font-family:'Lora',serif;"
+      >
+        "{review.comment}"
+      </p>
+    ) : (
+      <p
+        class:list={[
+          'mt-5 text-sm italic',
+          commentClass
+        ]}
+        style="font-family:'Lora',serif;"
+      >
+        ✓ Memberikan rating bintang 5
+      </p>
+    )
+  }
+
+  <!-- DATE -->
+  {
+    review.date && (
+      <time
+        class:list={[
+          'mt-4 block text-xs',
+          dateClass
+        ]}
+        style="font-family:'Lora',serif;"
+      >
+        {review.date}
+      </time>
+    )
+  }
+
+</article>

@@ -1,236 +1,251 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
-import menuData from '../content/menu.json';
-import reviewData from '../content/review.json';
+import ReviewCard from '../components/ReviewCard.astro';
 
-const title = "Menu Soto Gareng Lama";
-const grabFoodUrl = "https://food.grab.com/id/id/restaurant/soto-gareng-lama-sudagaran-delivery/6-C3L1ENU3APTTNX";
-const googleReviewUrl = "https://g.co/kgs/XDApvoR";
+import menuData from '../content/menu.json';
+import deliveryPlatforms from '../content/delivery-platforms';
+import { featuredReviews } from '../utils/reviews';
+
+const title = "Menu Soto Gareng Lama Banyumas — Harga & Cara Pesan";
+const description = "Menu lengkap Soto Gareng Lama Banyumas: Soto Ayam Kampung, Soto Babat, dan Soto Sapi asli khas Banyumas.";
 const whatsAppUrl = "https://wa.me/6282138163056";
-const phoneUrl = "tel:+6282138163056";
-const sortedReviews = [...reviewData].sort((a, b) => 
-  new Date(b.date) - new Date(a.date)
-).reverse();
 ---
 
-<BaseLayout {title}>
+<BaseLayout {title} {description} canonicalPath="/menu">
+
   <slot name="header">
     <Header />
   </slot>
 
-  <main class="max-w-6xl mx-auto px-4 py-8 min-h-[calc(100vh-200px)]">
-    <!-- Header Section -->
-    <div class="text-center mb-12">
-      <h1 class="text-3xl font-bold text-[#432818] mb-2">Menu Andalan Kami</h1>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        Nikmati rasa autentik Banyumas dengan bahan pilihan. 
-        <span class="font-semibold text-amber-600">Harga offline lebih hemat 15-25%!</span>
-      </p>
+  <!-- Hero -->
+  <section class="relative min-h-[50vh] overflow-hidden">
+
+    <img
+      src="/images/hero-soto.png"
+      alt="Semangkuk Soto Gareng Lama Banyumas"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/65"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#2C1A0E] via-black/30 to-black/10"></div>
+    <div class="absolute left-[-120px] top-[-120px] h-80 w-80 rounded-full bg-[#C9942A]/10 blur-3xl"></div>
+    <div class="absolute bottom-[-160px] right-[-120px] h-96 w-96 rounded-full bg-[#E8B84B]/10 blur-3xl"></div>
+
+    <div class="relative z-10 flex min-h-[50vh] items-center">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="max-w-3xl">
+
+          <span
+            class="inline-block rounded-full border border-[#E8B84B]/20 bg-[#C9942A]/10 px-5 py-2 text-xs uppercase tracking-[0.35em] text-[#F6D27D]"
+            style="font-family:'Lora',serif;">
+            Soto Legendaris Khas Banyumas
+          </span>
+
+          <h1 class="mt-6 text-4xl font-bold leading-tight text-white md:text-6xl" style="font-family:'Playfair Display',serif;">
+            Soto Gareng Lama
+          </h1>
+
+          <p class="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg" style="font-family:'Lora',serif;">
+            Cita rasa autentik warisan keluarga dengan kuah gurih khas Banyumas,
+            dimasak setiap hari menggunakan bahan pilihan.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a href="#menu"
+              class="flex items-center justify-center rounded-2xl bg-[#C9942A] px-8 py-4 text-sm font-bold text-[#2C1A0E] transition-all duration-300 hover:scale-[1.03] hover:bg-[#EBC46A]"
+              style="font-family:'Lora',serif;">
+              Lihat Menu
+            </a>
+            <a href={`${whatsAppUrl}?text=Halo%20Soto%20Gareng%20Lama,%20saya%20ingin%20pesan%20soto.`}
+              target="_blank" rel="noopener"
+              class="flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/15"
+              style="font-family:'Lora',serif;">
+              Pesan via WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </div>
     </div>
 
-    <!-- Price Comparison Banner -->
-    <div class="bg-gradient-to-r from-amber-50 to-amber-100 border-l-4 border-amber-400 p-4 mb-8 rounded-lg flex items-start">
-      <span class="text-amber-600 mr-3 text-xl">💡</span>
-      <div>
-        <h3 class="font-bold text-[#432818] mb-1">Mengapa harga berbeda?</h3>
-        <p class="text-sm text-gray-700">
-          Harga di GrabFood termasuk biaya layanan 15-25%. 
-          <span class="font-semibold">Pesan langsung via WhatsApp/Telepon untuk harga asli warung.</span>
+  </section>
+
+  <main class="mx-auto max-w-7xl px-4 py-16 pb-12">
+
+    <!-- Info Banner -->
+    <div class="relative mb-20 overflow-hidden rounded-[36px] border border-[#EADFD3] bg-[#FFF9F1] p-7 shadow-[0_10px_40px_rgba(0,0,0,0.04)] md:p-8">
+      <div class="absolute right-[-50px] top-[-50px] h-40 w-40 rounded-full bg-[#C9942A]/10 blur-3xl"></div>
+      <div class="relative z-10 flex items-start gap-5">
+        <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-3xl bg-[#C9942A]/10">
+          <span class="text-2xl">💡</span>
+        </div>
+        <div style="font-family:'Lora',serif;">
+          <h2 class="text-xl font-bold text-[#2C1A0E]">Pesan Langsung Lebih Hemat</h2>
+          <p class="mt-2 text-sm leading-relaxed text-[#6B5B4E] md:text-base">
+            Harga di platform online sudah termasuk biaya layanan aplikasi.
+            Untuk mendapatkan harga asli warung tanpa tambahan biaya,
+            pesan langsung via WhatsApp atau telepon.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <section id="menu" class="relative mb-32">
+
+      <div class="absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute left-0 top-0 h-72 w-72 rounded-full bg-[#C9942A]/10 blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#5C3317]/10 blur-3xl"></div>
+      </div>
+
+      <div class="mb-16 text-center">
+        <span class="inline-block rounded-full border border-[#C9942A]/20 bg-[#FFF9F0] px-5 py-2 text-xs uppercase tracking-[0.3em] text-[#C9942A]" style="font-family:'Lora',serif;">
+          Signature Menu
+        </span>
+        <h2 class="mt-5 text-4xl font-bold text-[#2C1A0E] md:text-5xl" style="font-family:'Playfair Display',serif;">
+          Pilihan Soto Favorit
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-[#6B5B4E] md:text-base" style="font-family:'Lora',serif;">
+          Soto khas Banyumas dengan kuah gurih autentik, dimasak setiap hari menggunakan bahan pilihan.
         </p>
       </div>
-    </div>
 
-    <!-- Menu Grid with Popup Effect -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-      {menuData.map((item) => {
-        const onlinePrice = Math.round((item.price + 1000) * 1.25);
-        const savings = onlinePrice - item.price;
-        
-        return (
-          <div class="group relative bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 border border-gray-100 hover:border-amber-300 hover:shadow-xl hover:-translate-y-2">
-            <!-- Popup Indicator -->
-            <div class="absolute inset-0 bg-amber-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl z-0"></div>
-            
-            <!-- Highlight Border -->
-            <div class="absolute inset-0 border-2 border-transparent group-hover:border-amber-400 rounded-xl pointer-events-none transition-all duration-300"></div>
-            
-            <div class="relative z-10">
-              <img 
-                src={item.picture} 
-                alt={item.name}
-                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div class="p-5">
-                <h3 class="font-serif text-xl font-bold text-[#432818] mb-1 group-hover:text-amber-700 transition-colors">
-                  {item.name}
-                </h3>
-                <p class="text-gray-600 text-sm mb-3 group-hover:text-gray-800 transition-colors">
-                  {item.description}
-                </p>
-                
-                <div class="space-y-2">
-                  <!-- Harga Offline -->
-                  <div class="flex items-center">
-                    <span class="font-semibold text-green-600 group-hover:text-green-700 transition-colors">
-                      Rp {item.price.toLocaleString('id-ID')}
-                    </span>
-                    <span class="ml-2 text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full group-hover:bg-green-200 transition-colors">
-                      Hemat Rp {savings.toLocaleString('id-ID')}
-                    </span>
-                  </div>
-                  
-                  <!-- Harga Online -->
-                  <div class="flex items-center text-sm">
-                    <span class="text-gray-500 mr-2 group-hover:text-gray-600 transition-colors">GrabFood:</span>
-                    <span class="line-through text-gray-400 group-hover:text-gray-500 transition-colors">
-                      Rp {onlinePrice.toLocaleString('id-ID')}
-                    </span>
-                  </div>
-                </div>
-
-                <div class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                  <a 
-                    href={grabFoodUrl} 
-                    class="flex-1 text-center text-xs bg-[#00B14F] text-white px-3 py-2 rounded-lg hover:bg-[#008a3c] transition flex items-center justify-center gap-1"
-                  >
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M3 20.5V3.5C3 2.67 3.67 2 4.5 2H13L18 7V20.5C18 21.33 17.33 22 16.5 22H4.5C3.67 22 3 21.33 3 20.5Z"/>
-                    </svg>
-                    GrabFood
-                  </a>
-                  <a 
-                    href={`${whatsAppUrl}?text=Pesan%20${encodeURIComponent(item.name)}%20Rp${item.price.toLocaleString('id-ID')}`}
-                    class="flex-1 text-center text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded-lg transition"
-                  >
-                    WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-      })}
-    </div>
-
-    <!-- Google Review Section -->
-    <div class="bg-white p-6 rounded-xl shadow-md mb-12 animate-fadeIn delay-300">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-[#432818]">Testimoni Pelanggan</h2>
-        <a href={googleReviewUrl} target="_blank" class="text-sm text-blue-600 hover:underline flex items-center group">
-          Lihat semua di Google
-          <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-          </svg>
-        </a>
-      </div>
-      
-      <div class="grid md:grid-cols-2 gap-6">
-        {sortedReviews.slice(0, 4).map((review, index) => {
-          const animationDelay = 100 + (index * 100);
-          
+      <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        {menuData.map((item) => {
+          const onlinePrice = Math.round((item.price + 1000) * 1.25);
           return (
-            <div 
-              class="border border-gray-200 p-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1"
-              style={`animation-delay: ${animationDelay}ms`}
-            >
-              <div class="flex items-center mb-3">
-                <div class="text-amber-400 text-xl mr-2">
-                  {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+            <article class="group relative isolate overflow-hidden rounded-[36px] border border-[#EFE3D5] bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
+
+              <div class="relative h-[260px] overflow-hidden rounded-t-[36px]">
+                <img
+                  src={item.picture}
+                  alt={`${item.name} Soto Gareng Lama Banyumas`}
+                  class="h-full w-full rounded-t-[36px] object-cover transition-transform duration-700 will-change-transform group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 rounded-t-[36px] bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-5 left-5 right-5">
+                  <h3 class="text-3xl font-bold text-white" style="font-family:'Playfair Display',serif;">{item.name}</h3>
                 </div>
-                <span class="font-semibold text-[#432818]">{review.name}</span>
+                <div class="absolute right-5 top-5 rounded-full bg-black/50 px-4 py-2 backdrop-blur-md">
+                  <span class="text-sm font-semibold text-[#F6D27D]" style="font-family:'Lora',serif;">
+                    Rp {item.price.toLocaleString('id-ID')}
+                  </span>
+                </div>
               </div>
-              {review.comment && (
-                <p class="text-gray-700 text-sm mb-2 animate-fadeIn">"{review.comment}"</p>
-              )}
-              <span 
-                class="text-sm text-gray-500 time-ago"
-                data-date={review.date}
-                title={new Date(review.date).toLocaleString('id-ID')}
-              >
-                {review.date}
-              </span>
-              <div class="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg"></div>
-            </div>
-          )
+
+              <div class="p-6">
+                <p class="text-sm leading-relaxed text-[#6B5B4E]" style="font-family:'Lora',serif;">{item.description}</p>
+
+                <div class="mt-5 flex items-center justify-between rounded-2xl bg-[#FFF8EF] p-4">
+                  <div>
+                    <p class="text-xs uppercase tracking-widest text-[#A78762]">Harga Langsung</p>
+                    <p class="mt-1 text-2xl font-bold text-[#2C1A0E]">Rp {item.price.toLocaleString('id-ID')}</p>
+                  </div>
+                  <div class="group/tooltip relative">
+                    <button class="flex h-8 w-8 items-center justify-center rounded-full bg-[#F2E5D7] text-sm font-bold text-[#8B5E3C]">?</button>
+                    <div class="invisible absolute bottom-12 right-0 z-20 w-56 rounded-2xl bg-[#2C1A0E] p-4 text-xs leading-relaxed text-white opacity-0 shadow-2xl transition-all duration-300 group-hover/tooltip:visible group-hover/tooltip:opacity-100">
+                      Harga aplikasi online dapat lebih tinggi karena biaya layanan platform delivery.
+                      <div class="mt-3 border-t border-white/10 pt-3">
+                        <div class="flex items-center justify-between">
+                          <span class="text-white/60">Online:</span>
+                          <span class="text-red-300 line-through">Rp {onlinePrice.toLocaleString('id-ID')}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6 space-y-4">
+                  <a
+                    href={`${whatsAppUrl}?text=Halo%20Soto%20Gareng%20Lama,%20saya%20ingin%20pesan%20${encodeURIComponent(item.name)}`}
+                    target="_blank" rel="noopener"
+                    class="flex w-full items-center justify-center rounded-2xl bg-[#2C1A0E] px-6 py-4 text-sm font-bold text-[#F6D27D] transition-all duration-300 hover:scale-[1.015] hover:bg-[#3B2314] hover:shadow-xl"
+                    style="font-family:'Lora',serif;">
+                    ✦ Pesan via WhatsApp
+                  </a>
+
+                  <div class="space-y-3 md:hidden">
+                    {deliveryPlatforms.map((platform) => (
+                      <a href={platform.url} target="_blank" rel="noopener"
+                        class="flex w-full items-center justify-center rounded-2xl border border-[#EFE4D7] bg-[#FAF7F2] px-5 py-4 text-sm font-semibold text-[#2C1A0E] transition-all duration-300 hover:bg-white hover:shadow-lg"
+                        style="font-family:'Lora',serif;">
+                        Pesan via {platform.name}
+                      </a>
+                    ))}
+                  </div>
+
+                  <div class="hidden grid-cols-3 gap-3 md:grid">
+                    {deliveryPlatforms.map((platform) => (
+                      <a
+                        href={platform.url}
+                        target="_blank"
+                        rel="noopener"
+                        class="group/delivery flex h-[88px] items-center justify-center overflow-hidden rounded-2xl border border-[#EFE4D7] bg-[#FAF7F2] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#C9942A]/40 hover:bg-white hover:shadow-xl"
+                      >
+                        <div class="flex h-full w-full items-center justify-center">
+                          <img
+                            src={platform.logo}
+                            alt={`Logo ${platform.name}`}
+                            class:list={[
+                              "max-h-[34px] w-auto max-w-[110px] object-contain opacity-90 transition-all duration-300 group-hover/delivery:scale-105 group-hover/delivery:opacity-100",
+
+                              platform.name === "GrabFood" && "max-h-[38px]",
+                              platform.name === "GoFood" && "max-h-[30px]",
+                              platform.name === "ShopeeFood" && "max-h-[26px] max-w-[92px]"
+                            ]}
+                            loading="lazy"
+                          />
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          );
         })}
       </div>
 
-      <!-- Dual CTA Section with Animations -->
-      <div class="grid md:grid-cols-2 gap-6 mt-8 animate-fadeIn delay-500">
-        <!-- Pesan Langsung -->
-        <div class="bg-[#432818] rounded-xl p-8 text-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-          <h2 class="text-2xl font-bold mb-4">Pesan Langsung</h2>
-          <p class="mb-6">Dapatkan harga asli warung tanpa biaya tambahan</p>
-          <div class="space-y-3">
-            <a 
-              href={`${whatsAppUrl}?text=Halo%20Soto%20Gareng%20Lama,%20saya%20ingin%20pesan%20soto.`}
-              class="block bg-white hover:bg-gray-300 text-[#432818] px-6 py-3 rounded-full font-semibold transition-all duration-300 text-center"
-            >
-              <span class="flex items-center justify-center gap-2">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.52 3.48A11.89 11.89 0 0012.02 0a12 12 0 00-9.43 19.17L0 24l4.92-2.58A11.9 11.9 0 0012 24a12 12 0 008.49-20.52zm-8.5 18.1a9.49 9.49 0 01-4.82-1.3l-.35-.2-2.85 1.49.76-3.08-.2-.32a9.5 9.5 0 0115.08-11.21 9.48 9.48 0 01-7.62 15.62zm5.33-7.16c-.29-.15-1.7-.84-1.96-.94s-.46-.14-.65.14-.75.94-.92 1.13-.34.21-.63.07a7.67 7.67 0 01-2.27-1.4 8.59 8.59 0 01-1.59-2.06c-.17-.29 0-.45.13-.6s.29-.34.43-.51a2.03 2.03 0 00.29-.49.56.56 0 00-.03-.54c-.07-.15-.65-1.56-.89-2.14s-.47-.47-.64-.48h-.55a1.06 1.06 0 00-.76.35A3.2 3.2 0 005.4 8.1c0 1.91 1.39 3.76 1.58 4s2.73 4.14 6.63 5.63a9 9 0 003.36.64c1.28 0 2.45-.44 3.37-1.24s1.29-1.79 1.43-2.05a1.3 1.3 0 00-.63-1.21z"/>
-                </svg>
-                Pesan via WhatsApp
-              </span>
-            </a>
-            <a 
-              href={phoneUrl}
-              class="block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 text-center"
-            >
-              <span class="flex items-center justify-center gap-2">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.5 2.52.78 3.88.78a1 1 0 011 1v3.25a1 1 0 01-1 1A16 16 0 013 5a1 1 0 011-1h3.25a1 1 0 011 1c0 1.36.27 2.68.78 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
-                </svg>
-                Telepon Sekarang
-              </span>
-            </a>
-          </div>
-        </div>
+    </section>
 
-        <!-- Pesan Online -->
-        <div class="bg-[#00B14F] rounded-xl p-8 text-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-          <h2 class="text-2xl font-bold mb-4">Pesan Online</h2>
-          <p class="mb-6">Untuk kenyamanan delivery tanpa keluar rumah</p>
-          <div class="space-y-3">
-            <a 
-              href={grabFoodUrl}
-              target="_blank"
-              class="block bg-white hover:bg-gray-200 text-[#00B14F] px-6 py-3 rounded-full font-semibold transition-all duration-300 text-center"
-            >
-              <span class="flex items-center justify-center gap-2">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/>
-                </svg>
-                GrabFood
-              </span>
-            </a>
-          </div>
-        </div>
+    <!-- Reviews on menu page -->
+    <section>
+      <div class="mb-10 text-center">
+        <h2 class="text-4xl font-bold text-[#2C1A0E]" style="font-family:'Playfair Display',serif;">Ulasan Pelanggan</h2>
+        <div class="mx-auto mt-4 h-px w-28 bg-gradient-to-r from-transparent via-[#C9942A] to-transparent"></div>
       </div>
-    </div>
 
-    <script is:inline type="module" src="/src/scripts/timeAgo"></script>
+      <div class="flex snap-x gap-5 overflow-x-auto pb-4 md:grid md:grid-cols-3">
+        {featuredReviews.slice(0, 6).map((review) => (
+          <div class="min-w-[300px] snap-center md:min-w-0">
+            <ReviewCard review={review} variant="light" />
+          </div>
+        ))}
+      </div>
 
-    <style is:global>
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .animate-fadeIn {
-        animation: fadeIn 0.5s ease-out forwards;
-        opacity: 0;
-      }
-    </style>
+      <div class="mt-8 text-center">
+        <a href="https://g.page/r/CdUqqldLQEVhEAE/review" target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 rounded-full border border-[#C9942A]/30 px-7 py-3 text-sm text-[#5C3317] transition-all duration-300 hover:scale-[1.02] hover:border-[#C9942A] hover:text-[#C9942A]"
+          style="font-family:'Lora',serif;">
+          ✍️ Tambahkan Ulasan di Google
+        </a>
+      </div>
+    </section>
+
   </main>
-</BaseLayout>
 
-<style>
-  .group:hover .group-hover\:scale-105 {
-    transform: scale(1.05);
-  }
-  .group:hover .group-hover\:-translate-y-2 {
-    transform: translateY(-0.5rem);
-  }
-</style>
+  <!-- Sticky mobile CTA -->
+  <div class="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-[#2C1A0E] to-transparent p-3 md:hidden">
+    <a
+      href={`${whatsAppUrl}?text=Halo%20Soto%20Gareng%20Lama,%20saya%20ingin%20pesan%20soto.`}
+      target="_blank" rel="noopener"
+      class="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#C9942A] py-4 text-sm font-bold text-[#2C1A0E] shadow-2xl transition-colors hover:bg-[#E8B84B]"
+      style="font-family:'Lora',serif;">
+      ✦ Pesan via WhatsApp Sekarang
+    </a>
+  </div>
+  <div class="h-20 md:hidden"></div>
+
+</BaseLayout>

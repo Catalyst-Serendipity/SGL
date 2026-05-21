@@ -1,20 +1,30 @@
 [
     {
       "name": "Ariyani",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocLgVyT5jNn9-po3j8yocGznX1Vz4-9dGsPfadbso_SLrQm7MA=w36-h36-p-rp-mo-br100",
       "rating": 5,
       "comment": "",
       "date": "25 Des 2024, 22.53"
     },
     {
       "name": "toleransi",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjVde0kcLwCiLtMKfvU37nPSZhJdncOx3jyNrgM8VeV6Dy2vUr0=w36-h36-p-rp-mo-ba2-br100",
       "rating": 5,
       "comment": "Sotonya mantap Porsinya pas",
       "date": "4 Jan 2025, 14.04"
     },
     {
       "name": "irene saputri",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocLUM0N5wqCLK3hFQf95qkpKFpTGzio8DRoYAfZMnG_I3YJbXA=w36-h36-p-rp-mo-br100",
       "rating": 5,
       "comment": "",
       "date": "16 Jun 2025, 10.00"
+    },
+    {
+      "name": "duana design",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocL3Er0SOTy28napbB-TKmyC2n3e3i674Qz9-e0_uQPVGvns4w=w36-h36-p-rp-mo-br100",
+      "rating": 5,
+      "comment": "Enak banget bumbu kacang nya asli",
+      "date": "3 Agu 2025, 17.18"
     }
 ]

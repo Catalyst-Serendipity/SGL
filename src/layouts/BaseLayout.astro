@@ -1,51 +1,64 @@
 ---
-const { title = "Soto Gareng Lama", description = "Soto Gareng Lama adalah kuliner legendaris khas Banyumas. Menyajikan Soto Ayam Kampung Asli, Soto Babat Asli, dan Soto Sapi Asli dengan resep turun-temurun." } = Astro.props;
+const {
+  title = "Soto Gareng Lama",
+  description = "Soto Gareng Lama — kuliner soto legendaris khas Banyumas. Nikmati Soto Ayam Kampung Asli, Soto Babat Asli, dan Soto Sapi Asli dengan resep warisan turun-temurun sejak dahulu.",
+  canonicalPath = "/"
+} = Astro.props;
+
 import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const siteUrl = "https://sotogarenglama.biz.id";
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
 ---
 
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="soto, soto gareng, soto gareng lama, soto sapi, soto babat, makanan terenak, soto terenak, soto ayam asli, soto ayam kampung asli, soto sapi asli, soto babat asli, restoran, restaurants, soto banyumas, makanan, grab makanan, grabfood soto, grabfood soto gareng, banyumas kota lama, soto enak, soto kota lama, kota lama, kuliner banyumas, soto kampung, soto ayam, soto ayam kampung" />
+    <meta name="keywords" content="soto gareng lama, soto banyumas, soto ayam kampung banyumas, soto terenak banyumas, warung soto banyumas, soto babat banyumas, soto sapi banyumas, kuliner banyumas, makanan khas banyumas, soto enak banyumas, soto gareng, sudagaran banyumas" />
     <meta name="author" content="Soto Gareng Lama" />
+    <link rel="canonical" href={canonicalUrl} />
 
-    <!-- SEO & OG -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/og-cover.jpg" />
-    <meta property="og:url" content="https://sotogarenglama.biz.id" />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${siteUrl}/og-cover.jpg`} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Soto Gareng Lama" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/og-cover.jpg" />
+    <meta name="twitter:image" content={`${siteUrl}/og-cover.jpg`} />
 
-    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#bb9457">
-
-    <!-- Robots -->
+    <meta name="theme-color" content="#2C1A0E">
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://sotogarenglama.biz.id" />
 
-    <!-- Structured Data (JSON-LD) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <script is:inline type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Restaurant",
       "name": "Soto Gareng Lama",
-      "image": "https://sotogarenglama.biz.id/logo.png",
+      "alternateName": "Warung Soto Gareng Lama Banyumas",
+      "description": "Warung soto legendaris khas Banyumas dengan resep turun-temurun. Menyajikan Soto Ayam Kampung, Soto Babat Asli, dan Soto Sapi Asli.",
+      "image": [
+        "https://sotogarenglama.biz.id/logo.png",
+        "https://sotogarenglama.biz.id/og-cover.jpg"
+      ],
       "telephone": "+6282138163056",
+      "url": "https://sotogarenglama.biz.id",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Jl. Kulon, Mruyung, Sudagaran",
@@ -59,23 +72,33 @@ import Footer from '../components/Footer.astro';
         "latitude": -7.51233,
         "longitude": 109.29235
       },
-      "url": "https://sotogarenglama.biz.id",
-      "servesCuisine": "Soto, Makanan Tradisional, Soto Ayam Kampung, Soto Babat Asli, Soto Sapi Asli",
-      "priceRange": "IDR20000-IDR30000"
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "16:00"
+      }],
+      "servesCuisine": ["Soto Ayam Kampung","Soto Babat","Soto Sapi","Makanan Tradisional Jawa"],
+      "priceRange": "Rp 22.000 – Rp 27.000",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "4",
+        "bestRating": "5"
+      },
+      "menu": "https://sotogarenglama.biz.id/menu",
+      "sameAs": [
+        "https://food.grab.com/id/id/restaurant/soto-gareng-lama-sudagaran-delivery/6-C3L1ENU3APTTNX",
+        "https://gofood.link/a/RXMBsaf",
+        "https://shopee.co.id/universal-link/now-food/shop/22546284"
+      ]
     }
     </script>
   </head>
 
-  <body class="bg-[#fdf7f0] text-gray-900 font-serif">
-    <!-- Header Slot -->
+  <body>
     <slot name="header" />
-
-    <!-- Main Content -->
-    <main class="container max-w-4xl mx-auto px-6 py-8">
-      <slot />
-    </main>
-
-    <!-- Footer -->
+    <main><slot /></main>
     <Footer />
   </body>
 </html>
